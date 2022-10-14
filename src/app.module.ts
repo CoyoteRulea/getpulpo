@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
-import { MongooseModule } from "@nestjs/mongoose"
+import { ConfigModule } from '@nestjs/config';
+import { MongooseModule } from "@nestjs/mongoose";
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UsersModule } from './model/users/users.module';
@@ -7,9 +8,8 @@ import { AuthModule } from './model/auth/auth.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot(
-      "mongodb+srv://victor_ivan_mendez:Q1w2e3r4t5Y6@cluster0.lbh1auf.mongodb.net/?retryWrites=true&w=majority"
-    ),
+    ConfigModule.forRoot(),
+    MongooseModule.forRoot(process.env.MONGO_CONNECTION_STRING, { dbName: process.env.MONGO_DBNAME }),
     UsersModule,
     AuthModule,
   ],
