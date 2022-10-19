@@ -28,6 +28,17 @@ export class UsersController {
     };
   }
 
+    //post for delete user
+  @UseGuards(AuthenticatedGuard)
+  @Post('/deleteuser')
+  async deleteUser(
+    @Body('username') userName    : string,
+  ) {
+    const result = await this.usersService.deleteUser(userName);
+      
+    return result;
+  }
+  
   //Post for login page
   @UseGuards(LocalAuthGuard)
   @Post('/login')

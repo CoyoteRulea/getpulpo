@@ -1,6 +1,6 @@
 import * as mongoose from "mongoose";
 
-export const UsersSchema = new mongoose.Schema(
+export const VehiclesSchema = new mongoose.Schema(
   {
     vehicle_id: {
       type:     String,
@@ -25,7 +25,7 @@ export const UsersSchema = new mongoose.Schema(
   }
 )
 
-export interface Users extends mongoose.Document {
+export interface Vehicles extends mongoose.Document {
   _id:        string;
   vehicle_id: string;
   brand:      string;

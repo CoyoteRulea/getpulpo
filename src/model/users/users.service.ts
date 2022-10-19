@@ -34,4 +34,15 @@ export class UsersService {
 
     return user;
   }
+
+  async deleteUser(userName: string) {
+    const username  = userName.toLowerCase();
+    const user      = await this.userModel.findOne({ username });
+    if (!user) {
+      return {
+        "msg": "User doesn't exists"
+      }
+    }
+    return await user.delete();
+  }
 }
