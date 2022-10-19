@@ -13,3 +13,6 @@ In order to install MongoDB extension for VS Code, you need to go into Marketpla
 
 ### VS Code MongoPlayground
 If you need to remove a signedup user, you are allowed to use [Delete AnyUser Playground File](VS%20Code%20Playground\Delete%20AnyUser.mongodb) just change the user that you want to delete and run the file.
+
+Collections could be created (already created in pulpo_app mongodb) with [Create Collection Playground](VS%20Code%20Playground\Create%20Collections.mongodb)
+

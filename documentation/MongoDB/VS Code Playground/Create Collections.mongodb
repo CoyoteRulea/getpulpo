@@ -1,0 +1,34 @@
+// MongoDB Playground
+// Create catalogs
+use('pulpo_app');
+
+// Remove brands document if exists
+db.brands.drop();
+
+// Create brands document and collection
+db.brands.insertMany([
+  { '_id': 1, 'brand_code': 'VOW', 'brand': 'Volkswagen' },
+  { '_id': 2, 'brand_code': 'AUD', 'brand': 'Audi' },
+  { '_id': 3, 'brand_code': 'REN', 'brand': 'Renault' },
+  { '_id': 4, 'brand_code': 'SEA', 'brand': 'Seat' },
+  { '_id': 5, 'brand_code': 'VOL', 'brand': 'Volvo' },
+  { '_id': 6, 'brand_code': 'FIA', 'brand': 'Fiat' },
+  { '_id': 7, 'brand_code': 'KIA', 'brand': 'KIA' },
+  { '_id': 8, 'brand_code': 'FRD', 'brand': 'Ford' },
+]);
+
+
+// Remove colors document if exists
+db.colors.drop();
+
+// Create colors document and collection
+db.colors.insertMany([
+  { '_id': 1, 'color_code': 'RED', 'color': 'Red' },
+  { '_id': 2, 'color_code': 'BLU', 'color': 'Blue' },
+  { '_id': 3, 'color_code': 'YEL', 'color': 'Yellow' },
+  { '_id': 4, 'color_code': 'WHI', 'color': 'White' },
+  { '_id': 5, 'color_code': 'GRA', 'color': 'Gray' },
+  { '_id': 6, 'color_code': 'BLA', 'color': 'Black' },
+  { '_id': 7, 'color_code': 'ZAF', 'color': 'Zafiro' },
+]);
+

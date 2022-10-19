@@ -1,7 +1,9 @@
 # Get Pulpo API Reference
 In order to test GetPulpo API calls you are able to use the glossary declared in a [public Postman Workspace.](https://www.postman.com/coyoterulea/workspace/getpulpo-api/overview)
 
-## Declared calls.
+# Declared calls.
+
+## Users
 ### Signup (post)
 
 ```
@@ -38,3 +40,24 @@ This request was only created for test purposes. If user is signed in returns us
 http://localhost:3000/users/logout
 ```
 This request is used to remove authorization.
+
+## Colors
+### color By Code
+```
+http://localhost:3000/colors/colorbycode
+```
+
+Get color name by requested code
+```
+{
+    "color_code": "BLU"
+}
+```
+### Get Color List
+```
+http://localhost:3000/colors/getcolors
+```
+Get all colors list
+
+
+
