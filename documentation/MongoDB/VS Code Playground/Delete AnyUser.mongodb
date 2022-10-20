@@ -1,0 +1,4 @@
+// MongoDB Playground
+use('pulpo_app');
+
+db.users.findOneAndDelete({ username: 'anyuser'});

@@ -60,6 +60,11 @@ $ npm run test:e2e
 # test coverage
 $ npm run test:cov
 ```
+## Notes for GetPulpo
+
+### Mongo DB Info
+If you want to read all info related to MongoDB configuration please [click here](documentation/MongoDB/README.md)
+
 
 ## Support
 
