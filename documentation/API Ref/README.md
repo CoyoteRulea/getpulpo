@@ -7,7 +7,7 @@ In order to test GetPulpo API calls you are able to use the glossary declared in
 ### Signup (post)
 
 ```
-http://localhost:3000/users/signup
+http://localhost:3000/api/users/signup
 ```
 If you don't know any valid user you are able to create one calling this request with following raw json body:
 ```
@@ -19,7 +19,7 @@ If you don't know any valid user you are able to create one calling this request
 ### Login (post)
 
 ```
-http://localhost:3000/users/login
+http://localhost:3000/api/users/login
 ```
 In order to access into auth protected calls, you need to do a login request with a valid user and password with following json body:
 ```
@@ -31,20 +31,20 @@ In order to access into auth protected calls, you need to do a login request wit
 
 ### Protected Call (get)
 ```
-http://localhost:3000/users/protected
+http://localhost:3000/api/users/protected
 ```
 This request was only created for test purposes. If user is signed in returns userName, otherwise returns 403 error.
 
 ### Logout (get)
 ```
-http://localhost:3000/users/logout
+http://localhost:3000/api/users/logout
 ```
 This request is used to remove authorization.
 
 ## Colors
 ### color By Code
 ```
-http://localhost:3000/colors/colorbycode
+http://localhost:3000/api/colors/colorbycode
 ```
 
 Get color name by requested code
@@ -55,7 +55,7 @@ Get color name by requested code
 ```
 ### Get Color List
 ```
-http://localhost:3000/colors/getcolors
+http://localhost:3000/api/colors/getcolors
 ```
 Get all colors list
 
@@ -63,7 +63,7 @@ Get all colors list
 ## Brands
 ### Brand By Code
 ```
-http://localhost:3000/brands/brandbycode
+http://localhost:3000/api/brands/brandbycode
 ```
 
 Get brand name by requested code
@@ -74,7 +74,7 @@ Get brand name by requested code
 ```
 ### Get Brands List
 ```
-http://localhost:3000/brands/getbrands
+http://localhost:3000/api/brands/getbrands
 ```
 Get all brands list
 
@@ -82,7 +82,7 @@ Get all brands list
 ## Vehicles
 ### Add Vehicle
 ```
-http://localhost:3000/vehicles/addvehicle
+http://localhost:3000/api/vehicles/addvehicle
 ```
 Post request to add new vehicles into Database. Vehicle_Id is a required parameter and need to be unique. Brand and Color need to be valid codes into brands and colors colection.
 ```
@@ -98,7 +98,7 @@ Post request to add new vehicles into Database. Vehicle_Id is a required paramet
 
 ### Update Vehicle
 ```
-http://localhost:3000/vehicles/updatevehicle
+http://localhost:3000/api/vehicles/updatevehicle
 ```
 Update information to update a existing vehicle. _id needs to exists in database.
 ```
@@ -115,7 +115,7 @@ Update information to update a existing vehicle. _id needs to exists in database
 
 ## Find By fields
 ```
-http://localhost:3000/vehicles/findbyfields
+http://localhost:3000/api/vehicles/findbyfields
 ```
 Find all records in the "AND" filter criteria. Every parameter passed is one element added with ADD in your query.
 ```
@@ -131,7 +131,7 @@ Find all records in the "AND" filter criteria. Every parameter passed is one ele
 
 ## Delete Vehicle
 ```
-http://localhost:3000/vehicles/deletevehicle
+http://localhost:3000/api/vehicles/deletevehicle
 ```
 Post to delete existing vehicle _id need to exists in database.
 ```
