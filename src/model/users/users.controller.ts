@@ -24,8 +24,8 @@ export class UsersController {
     
     return {
       msg:      result.id === null ? 'User Already Exists' : 'New user added',
-      userId:   result.id,
-      userName: result.username
+      status:   result.id === null ? 205 : 201,
+      User: result
     };
   }
 
@@ -36,11 +36,12 @@ export class UsersController {
     @Body('username') userName    : string,
   ): Promise<UserResponse> {
     const result = await this.usersService.deleteUser(userName);
+    console.log(typeof result);
     if (typeof result !== "string") {
       return {
         User: result,
         status: 205,
-        msg: 'User credential removed correctly'
+        msg: 'User credentials removed correctly'
       }
     } else {
       return {
@@ -55,11 +56,7 @@ export class UsersController {
   @UseGuards(LocalAuthGuard)
   @Post('/login')
   login(@Request() req): UserResponse {
-    return {
-      User: req.user,
-      status: 201,
-      msg:  'Valid user'
-    };
+    return  req.user;
   }
 
   // Get / protected
@@ -79,7 +76,7 @@ export class UsersController {
     return { 
       User: null,
       status: 205,
-      msg: 'Good luck, Mr. Gorsky' 
+      msg: 'Good luck!!!, Mr. Gorsky' 
     }
   }
 }
