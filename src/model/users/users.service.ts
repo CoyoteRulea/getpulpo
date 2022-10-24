@@ -13,8 +13,7 @@ export class UsersService {
     const user      = await this.userModel.findOne({ username });
     if (user) {
       return {
-        id: null,
-        username: null
+        id: null
       }
     }
 
@@ -39,9 +38,7 @@ export class UsersService {
     const username  = userName.toLowerCase();
     const user      = await this.userModel.findOne({ username });
     if (!user) {
-      return {
-        "msg": "User doesn't exists"
-      }
+      return "User doesn't exists";
     }
     return await user.delete();
   }
