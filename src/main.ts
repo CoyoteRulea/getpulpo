@@ -6,6 +6,9 @@ import * as passport from "passport";
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.enableCors();
+  var cors = require('cors');
+  app.use(cors({ origin:true, credentials: true }));
+
   app.setGlobalPrefix('api');
   
   app.use(
@@ -13,6 +16,7 @@ async function bootstrap() {
       secret: "keyboard",
       resave: false,
       saveUninitialized: false,
+      cookie: { httpOnly: false }
     })
   )
   app.use(passport.initialize());
