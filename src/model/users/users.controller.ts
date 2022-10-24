@@ -3,6 +3,7 @@ import { UsersService } from './users.service';
 import { AuthenticatedGuard } from '../auth/authenticated.guard';
 import { LocalAuthGuard } from '../auth/local.auth.guard';
 import * as bcrypt from 'bcrypt';
+import { UserResponse } from './users.model';
 
 @Controller('users')
 export class UsersController {
@@ -33,18 +34,30 @@ export class UsersController {
   @Post('/deleteuser')
   async deleteUser(
     @Body('username') userName    : string,
-  ) {
+  ): Promise<UserResponse> {
     const result = await this.usersService.deleteUser(userName);
-      
-    return result;
+    if (typeof result !== "string") {
+      return {
+        User: result,
+        status: 205,
+        msg: 'User credential removed correctly'
+      }
+    } else {
+      return {
+        User: null,
+        status: 400,
+        msg: 'Unregistered user'
+      };
+    }
   }
   
   //Post for login page
   @UseGuards(LocalAuthGuard)
   @Post('/login')
-  login(@Request() req): any {
+  login(@Request() req): UserResponse {
     return {
       User: req.user,
+      status: 201,
       msg:  'Valid user'
     };
   }
@@ -52,14 +65,20 @@ export class UsersController {
   // Get / protected
   @UseGuards(AuthenticatedGuard)
   @Get('/protected')
-  getHello(@Request() req): string {
-    return req.user;
+  getHello(@Request() req): UserResponse {
+    return {
+      User: req.user,
+      status: 202,
+      msg: 'Request Accepted'
+    }
   }
 
   @Get('/logout')
-  logout(@Request() req): any {
+  logout(@Request() req): UserResponse {
     req.session.destroy();
     return { 
+      User: null,
+      status: 205,
       msg: 'Good luck, Mr. Gorsky' 
     }
   }

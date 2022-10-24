@@ -22,3 +22,9 @@ export interface Users extends mongoose.Document {
   username: string;
   password: string;
 }
+
+export interface UserResponse {
+  User: Users;
+  status: number;
+  msg: string;
+}
