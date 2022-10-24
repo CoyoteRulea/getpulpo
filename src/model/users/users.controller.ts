@@ -56,7 +56,11 @@ export class UsersController {
   @UseGuards(LocalAuthGuard)
   @Post('/login')
   login(@Request() req): UserResponse {
-    return  req.user;
+    return  {
+      User: req.user,
+      status: 202,
+      msg: 'User login by: ' + req.user.username
+    }
   }
 
   // Get / protected

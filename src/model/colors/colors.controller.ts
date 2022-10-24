@@ -1,4 +1,4 @@
-import { Controller, Get, Body, Request, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Body, UseGuards } from '@nestjs/common';
 import { ColorsService } from './colors.service';
 import { AuthenticatedGuard } from '../auth/authenticated.guard';
 
@@ -8,7 +8,7 @@ export class ColorsController {
 
   //Get Color By Code
   @UseGuards(AuthenticatedGuard)
-  @Get('/colorbycode')
+  @Post('/colorbycode')
   getColorByCode(
     @Body('color_code') colorCode: string,
   ) {
