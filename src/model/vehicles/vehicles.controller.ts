@@ -13,7 +13,7 @@ export class VehiclesController {
     ) {}
 
   //post to add vehicle
-  //@UseGuards(AuthenticatedGuard)
+  @UseGuards(AuthenticatedGuard)
   @Post('/addvehicle')
   async addVehicle(
     @Body('vehicle_id') vehicle_id  : string,
@@ -44,15 +44,23 @@ export class VehiclesController {
       assigned
     );
     
-    return {
-      msg:      result.id === null ? 'Vehicle Already Exists' : 'New vehicle added',
-      vehicleId:   result.id,
-      vehicleCode: result.vehicle_id
-    };
+    if (result.id === null) {
+      return {
+        vehicle:    null,
+        statusCode: 409,
+        msg:        'Vehicle already exists.'
+      };
+    } else {
+      return {
+        vehicle:    result,
+        statusCode: 201,
+        msg:        'Vehicle created correctly.'
+      }
+    }
   }
 
   //post to add vehicle
-  //@UseGuards(AuthenticatedGuard)
+  @UseGuards(AuthenticatedGuard)
   @Post('/updatevehicle')
   async updateVehicle(
     @Body('_id')        id          : string,
@@ -85,29 +93,37 @@ export class VehiclesController {
       assigned
     );
     
-    return {
-      msg:         result.id === null ? "Vehicle doens't exits" : 'Vehicle updated',
-      vehicleId:   result.id,
-      vehicleCode: result.vehicle_id
-    };
+    if (result.id === null) {
+      return {
+        Vehicle:     null,
+        statusCode:  401,
+        vehicleCode: 'Vehicle doens\'t exits'
+      };
+    } else {
+      return {
+        Vehicle:     result,
+        statusCode:  204,
+        vehicleCode: 'Vehicle updated'
+      };
+    }
   }
 
   //post to delete vehicle
-  //@UseGuards(AuthenticatedGuard)
+  @UseGuards(AuthenticatedGuard)
   @Post('/deletevehicle')
   async deleteVehicle(
       @Body('_id') _id  : string
     ) {
     const result = await this.vehiclesService.deleteVehicle(_id);
     return  {
-      "msg": !result ? "Vehicle doesn't exists" : "Vehicle deleted"
+      statusCode: !result ? 401 : 204,
+      msg:        !result ? "Vehicle doesn't exists" : "Vehicle deleted"
     };
   }
 
-  //@UseGuards(AuthenticatedGuard)
+  @UseGuards(AuthenticatedGuard)
   @Post('/findbyfields')
   async findbyFields(@Body() body) {
-    console.log(body);
     return await this.vehiclesService.getFilteredList(body);
   }
 }

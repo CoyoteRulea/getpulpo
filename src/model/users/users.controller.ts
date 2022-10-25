@@ -24,7 +24,7 @@ export class UsersController {
     
     return {
       msg:      result.id === null ? 'User Already Exists' : 'New user added',
-      status:   result.id === null ? 205 : 201,
+      statusCode:   result.id === null ? 205 : 201,
       User: result
     };
   }
@@ -40,13 +40,13 @@ export class UsersController {
     if (typeof result !== "string") {
       return {
         User: result,
-        status: 205,
+        statusCode: 205,
         msg: 'User credentials removed correctly'
       }
     } else {
       return {
         User: null,
-        status: 400,
+        statusCode: 400,
         msg: 'Unregistered user'
       };
     }
@@ -58,7 +58,7 @@ export class UsersController {
   login(@Request() req): UserResponse {
     return  {
       User: req.user,
-      status: 202,
+      statusCode: 202,
       msg: 'User login by: ' + req.user.username
     }
   }
@@ -69,7 +69,7 @@ export class UsersController {
   getHello(@Request() req): UserResponse {
     return {
       User: req.user,
-      status: 202,
+      statusCode: 202,
       msg: 'Request Accepted'
     }
   }
@@ -79,7 +79,7 @@ export class UsersController {
     req.session.destroy();
     return { 
       User: null,
-      status: 205,
+      statusCode: 205,
       msg: 'Good luck!!!, Mr. Gorsky' 
     }
   }

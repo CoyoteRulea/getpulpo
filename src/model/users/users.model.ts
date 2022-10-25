@@ -25,6 +25,6 @@ export interface Users extends mongoose.Document {
 
 export interface UserResponse {
   User: Users;
-  status: number;
+  statusCode: number;
   msg: string;
 }
