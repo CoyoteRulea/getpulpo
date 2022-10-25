@@ -24,7 +24,7 @@ export class UsersController {
     
     return {
       msg:      result.id === null ? 'User Already Exists' : 'New user added',
-      statusCode:   result.id === null ? 205 : 201,
+      statusCode:   result.id === null ? 409 : 201,
       User: result
     };
   }
